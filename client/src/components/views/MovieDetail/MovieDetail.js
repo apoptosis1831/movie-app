@@ -24,7 +24,7 @@ function MovieDetail(props) {
         fetch(endpointInfo)
         .then(response=>response.json())
         .then(response => {
-            console.log(response);
+            console.log('Movie data=', response);
             // 영화 정보 response로 가져온다
             setMovie(response);
         })

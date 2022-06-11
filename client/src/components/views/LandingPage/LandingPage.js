@@ -56,8 +56,7 @@ function LandingPage() {
             
             <div style = {{width : '85%', margin : '1rem auto'}}>
                 <h2>Movies by latest</h2>
-                <hr style = {{'margin-bottom': '16px'}}/>
-
+                
                     {/* Movie Grid cards */}
                     <Row gutter={[16,16]}>
                     {/* grid card 사이사이 하얀 여백 줌 */}
