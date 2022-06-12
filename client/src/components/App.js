@@ -24,8 +24,11 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/movie/:movieId" component={Auth(MovieDetail, null)} />
-          <Route exact path="/favorite" component={Auth(FavoritePage, true)} />
           {/* 아무나 /movie/:movieId 에 들어올 수 있다 */}
+
+          <Route exact path="/favorite" component={Auth(FavoritePage, true)} />
+          {/* 로그인 한 사용자만 /favorite 만 접속 가능 */}
+          
         </Switch>
       </div>
       <Footer />

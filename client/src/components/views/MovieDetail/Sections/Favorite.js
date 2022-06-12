@@ -35,9 +35,9 @@ function Favorite(props) {
             }
         })
 
+        // 해당 영화를 좋아요 했는지 체크
         Axios.post('/api/favorite/favorited', variables)
         .then(response => {
-
             if(response.data.success) {
                 setFavorited(response.data.favorited)
             } else{
@@ -48,6 +48,7 @@ function Favorite(props) {
 
 
     const onClickFavorite = () =>{
+        // 좋아요 했던 영화일때
         if(Favorited){
             Axios.post('/api/favorite/removeFromFavorite', variables)
             .then(response=>{
@@ -58,8 +59,7 @@ function Favorite(props) {
                     alert('Favorite 리스트에서 지우는 걸 실패했습니다')
                 }
             })
-
-        } else{
+        } else{ // 좋아요 했던 영화가 아닐때
             Axios.post('/api/favorite/addToFavorite', variables)
             .then(response=>{
                 if(response.data.success){
@@ -72,6 +72,7 @@ function Favorite(props) {
         }
     }
 
+    // Favorited boolean 상태따라 다르게 버튼 출력
   return (
     <div>
         <Button onClick = {onClickFavorite}>{Favorited ? "Not Favorite" : "Add to Favorite"} {FavoriteNumber} </Button>

@@ -35,12 +35,8 @@ router.post('/favorited', (req, res)=>{
 })
 
 
-
-
-
-
+// movieDetail 페이지에서 좋아요 누를때 (좋아요 삭제)
 router.post('/removeFromFavorite', (req, res)=>{
-
     Favorite.findOneAndDelete({ movieId: req.body.movieId , userFrom: req.body.userFrom })
     .exec( (err,doc)=> {
         if(err) return res.status(400).send(err)
@@ -48,7 +44,7 @@ router.post('/removeFromFavorite', (req, res)=>{
     })
 })
 
-
+// movieDetail 페이지에서 좋아요 누를때 (좋아요 추가)
 router.post('/addToFavorite', (req, res)=>{
 
     const favorite = new Favorite(req.body)
@@ -63,7 +59,7 @@ router.post('/addToFavorite', (req, res)=>{
 
 
 router.post('/getFavoritedMovie', (req, res)=>{
-
+    // DB에서 해당 데이터 찾기
     Favorite.find({'userFrom': req.body.userFrom})
     .exec((err,favorites)=>{
         if(err) return res.status(400).send(err)
@@ -73,6 +69,7 @@ router.post('/getFavoritedMovie', (req, res)=>{
 
 
 router.post('/removeFromFavorite', (req, res)=>{
+    // DB에서 해당 데이터 삭제
     Favorite.findOneAndDelete({movieId : req.body.movieId, userFrom: req.body.userFrom})
     .exec((err,result)=>{
         if(err) return res.status(400).send(err)
